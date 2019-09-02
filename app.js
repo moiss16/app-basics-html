@@ -9,7 +9,7 @@ const playnote = event =>{
     //console.log(audioId);
     audio.pause();
     audio.currentTime = 0;
-    audio.play();
+    audio.play()
 }
 
 buttons.forEach(
