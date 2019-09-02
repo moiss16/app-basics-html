@@ -1,10 +1,27 @@
-alert('dude js is working');
-let btnDo=documents.getElementById('btnDo');
 
-let func= () => {
-    console.log('hello there')
+const buttons = document.querySelectorAll('button');
 
-
+const playnote = event =>{
+    const button =event.target;
+    const note = button.dataset.note;
+    const audioId = `Audio${note}`;
+    const audio = document.getElementById(audioId);
+    //console.log(audioId);
+    audio.pause();
+    audio.currentTime = 0;
+    audio.play();
 }
 
-btnDo.addEventListener('click',func);
+buttons.forEach(
+    button => button.addEventListener('click', playnote)
+    );
+
+const keyNoteDown = event =>{
+    console.log(event);
+    const key = event.key;
+    console.log(key);
+    const button = document.querySelector(`button[data-key="${key}"]`);
+    if(button) button.click();
+}
+
+document.addEventListener('keydown', keyNoteDown);
